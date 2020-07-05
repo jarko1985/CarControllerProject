@@ -1,0 +1,24 @@
+extends base
+
+block content
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+        a.navbar-brand(href='#') Navbar
+        button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+            ul.navbar-nav
+                li.nav-item.active
+                    a.nav-link(href='#')
+                li.nav-item
+                    a.nav-link(href='#') Features    
+                li.nav-item
+                    a.nav-link(href='#') Pricing
+                li.nav-item
+                    a.nav-link.disabled(href='#' tabindex='-1' aria-disabled='true') Disabled   
+    .video-background
+        .video-wrap
+            #video
+                video#bgvid(autoplay,loop,muted,playsinline)
+                    source(src='image/video2.mp4',type='video/mp4')
+    .dep
+        h1 hello world

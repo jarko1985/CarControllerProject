@@ -1,0 +1,41 @@
+extends base
+
+block content
+    main.main
+        .card-container
+            for car in cars
+                .card
+                    .card__header
+                        .card__picture
+                            .card__picture-overlay &nbsp;
+                            img.card__picture-img(src=`image/${car.photo}`, alt=`${car.gsmId}`)
+                        h3.heading-tertirary
+                            span=car.gsmId
+
+                    .card__details
+                        h4.card__sub-heading=`${car.owner}`
+                        p.card__text=`${car.plateNo}`
+                        .card__data
+                            svg.card__icon
+                                use(xlink:href='image/icons.svg#icon-map-pin')
+                            span=car.issuingEmirate
+                        .card__data
+                            svg.card__icon
+                                use(xlink:href='img/icons.svg#icon-calendar')
+                        .card__data
+                            svg.card__icon
+                                use(xlink:href='image/icons.svg#icon-arrow-left')
+                            span=car.latitude
+                        .card__data
+                            svg.card__icon
+                                use(xlink:href='image/icons.svg#icon-arrow-down')
+                            span=car.longitude
+
+                    .card__footer
+                        p
+                            span.card__footer-value=car.insuranceCompany
+                            span.card__footer-text 
+                        p.card__ratings
+                            span.card__footer-value 
+                            span.card__footer-text 
+                        a.btn.btn--green.btn--small(href=`/car/${car.slug}`) Details

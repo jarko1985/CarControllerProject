@@ -1,0 +1,111 @@
+extends base 
+block append head
+    script(src='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js')
+    link(href='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet')    
+    
+
+
+block content
+    section.section-header
+        .header__hero
+            .header__hero-overlay &nbsp;
+            img.header__hero-img(src=`/image/${car.photo}`, alt=`${car.gsmId}`)
+
+        .heading-box
+            h1.heading-primary
+                span=car.gsmId
+            .heading-box__group
+                .heading-box__detail
+                    svg.heading-box__icon
+                        use(xlink:href='/image/icons.svg#icon-clock')
+                    span.heading-box__text=car.owner
+                .heading-box__detail
+                    svg.heading-box__icon
+                        use(xlink:href='/image/icons.svg#icon-map-pin')
+                    span.heading-box__text=car.issuingEmirate
+
+    section.section-description
+        .overview-box
+            div
+                .overview-box__group
+                    h4.heading-secondary.ma-bt-lg Car Information
+                    .overview-box__detail
+                        svg.overview-box__icon
+                            use(xlink:href='/image/icons.svg#icon-calendar')
+                        span.overview-box__label Latitude
+                        span.overview-box__text=car.latitude
+                    .overview-box__detail
+                        svg.overview-box__icon
+                            use(xlink:href='/image/icons.svg#icon-trending-up')
+                        span.overview-box__label Longitude
+                        span.overview-box__text=car.longitude
+                    .overview-box__detail
+                       
+                          
+                    .overview-box__detail
+                        svg.overview-box__icon
+                            use(xlink:href='/image/icons.svg#icon-star')
+                        span.overview-box__label Created at
+                        span.overview-box__text=car.createdAt
+
+                
+
+        .description-box
+            h4.car-control-heading Control This Car
+            <br>
+            <label>Speed</label>&nbsp&nbsp
+            input#msg.car-control-input(type='text' name='msg'  placeholder='Enter Speed' rows="1")
+            <br><br>
+             <label>Phone Number</label>&nbsp&nbsp
+            input#number.car-control-input(type='tel' name='number'  placeholder='Enter Mobile Number' rows="1")
+            <br><br>
+            button#btnSendSpeed.btn-send.btn--green.btn--small Control  
+            p.response
+        .description-box2
+            .description-box2-heading Define a control Area
+
+            .description-box2-content              
+                .box1  
+                    input#msgNWLat.car-control-input(type='text' name='NW Lat'  placeholder='NW Lat' rows="1")
+                    <br>
+                    Button#btnSendCoordsNWLat.btn-send Send
+                    input#msgNWLng.car-control-input(type='text' name='NW Lng'  placeholder='NW Lng' rows="1")
+                    <br>
+                    Button#btnSendCoordsNWLng.btn-send Send
+                    input#msgNELat.car-control-input(type='text' name='NE Lat'  placeholder='NE Lat' rows="1")
+                    <br>
+                    Button#btnSendCoordsNELat.btn-send Send
+                    input#msgNELng.car-control-input(type='text' name='NE Lat'  placeholder='NE Lng' rows="1")
+                    <br>
+                    Button#btnSendCoordsNELng.btn-send Send
+                .box2
+                    input#msgSWLat.car-control-input(type='text' name='SW Lat'  placeholder='SW Lat' rows="1")
+                    <br>
+                    Button#btnSendCoordsSWLat.btn-send Send
+                    input#msgSWLng.car-control-input(type='text' name='SW Lng'  placeholder='SW Lng' rows="1")
+                    <br>
+                    Button#btnSendCoordsSWLng.btn-send Send
+                    input#msgSELat.car-control-input(type='text' name='SE Lat'  placeholder='SE Lat' rows="1")
+                    <br>
+                    Button#btnSendCoordsSELat.btn-send Send
+                    input#msgSELng.car-control-input(type='text' name='SE Lng'  placeholder='SE Lng' rows="1")
+                    <br>
+                    Button#btnSendCoordsSELng.btn-send Send
+                    
+                  
+
+
+    section.section-map
+        #map(data-locations = `${JSON.stringify(car.locations)}`)
+
+
+    section.section-cta
+        .cta
+            .cta__img.cta__img--logo
+                img(src='', alt='Natours logo')
+            img.cta__img.cta__img--1(src='', alt='')
+            img.cta__img.cta__img--2(src='', alt='')
+            .cta__content
+            h2.heading-secondary What are you waiting for?
+            p.cta__text 10 days. 1 adventure. Infinite memories. Make it yours today!
+            button.btn.btn--green.span-all-rows Book tour now!
